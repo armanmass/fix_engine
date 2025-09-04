@@ -59,6 +59,7 @@ class SetUp(ConanFile):
         if self.settings.compiler.cppstd:
             cmake.variables["CMAKE_CXX_STANDARD"] = str(self.settings.compiler.cppstd)
             cmake.variables["CMAKE_CXX_STANDARD_REQUIRED"] = "ON"
+        cmake.variables["CMAKE_EXPORT_COMPILE_COMMANDS"] = "ON"
         cmake.generate()
 
         deps = CMakeDeps(self)
