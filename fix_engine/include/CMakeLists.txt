@@ -2,6 +2,7 @@ add_library(
     FIXEngineLib
     FixApplication.hpp
 )
+
 set_target_properties(FIXEngineLib PROPERTIES LINKER_LANGUAGE CXX)
 
 target_include_directories(
@@ -12,6 +13,7 @@ target_include_directories(
 
 target_link_libraries(
     FIXEngineLib
-    PUBLIC    
+    PUBLIC
+        Common
         quickfix::quickfix
 )

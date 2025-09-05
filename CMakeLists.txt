@@ -3,5 +3,7 @@ project(FIXApplication)
 
 find_package(quickfix REQUIRED)
 
-add_subdirectory(engine)
+add_subdirectory(common)
+add_subdirectory(fix_engine)
+
 add_subdirectory(client_simulator)

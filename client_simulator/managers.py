@@ -44,8 +44,8 @@ class ClientManager:
 
         settings = {**self.defaultSettings, **clientConfig}
 
-        transportDict   = f"{cwd}/../spec/{settings["fix_version"].replace('.','')}.xml"
-        applicationDict = f"{cwd}/../spec/{settings["default_appl_ver_id"].replace('.','')}.xml"
+        transportDict   = f"{cwd}/../common/spec/{settings["fix_version"].replace('.','')}.xml"
+        applicationDict = f"{cwd}/../common/spec/{settings["default_appl_ver_id"].replace('.','')}.xml"
 
 
         tempFolder = f"{cwd}/tmp"
