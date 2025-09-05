@@ -1,0 +1,30 @@
+{
+  "default": 
+  {
+    "fix_version": "FIXT.1.1",
+    "default_appl_ver_id": "FIX.5.0SP2",
+    "target_comp_id": "SERVER",
+    "host": "localhost",
+    "port": 9876,
+    "start_time": "00:00:00",
+    "end_time": "23:59:59",
+    "heartbeat_interval": 20,
+    "message_interval": 10
+  },
+
+  "clients": 
+  [
+    {
+      "client_id": 1,
+      "sender_comp_id": "CLIENT_1"
+    },
+    {
+      "client_id": 2,
+      "sender_comp_id": "CLIENT_2"
+    },
+    {
+      "client_id": 3,
+      "sender_comp_id": "CLIENT_3"
+    }
+  ]
+}
