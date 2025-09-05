@@ -41,8 +41,8 @@ std::cout << "FIX50SP2.xml exists in CWD: " << std::filesystem::exists("FIX50SP2
         };
 
         sockAcceptor.start();
-std::cout << "Starting ...\n";
-        // while (true)? 
+        std::cout << "FIX engine started. Press Enter to quit." << std::endl;
+        std::cin.get();
         sockAcceptor.stop();
 
     }

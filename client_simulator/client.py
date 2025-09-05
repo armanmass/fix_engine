@@ -1,5 +1,9 @@
 import quickfix as fix
 from fixmessagegen import MessageGenerator
+import threading
+
+gOrderCounter = 0
+gOrderCounterLock = threading.Lock()
 
 class FIXClient(fix.Application):
     def __init__(self, clientID: int):
@@ -9,7 +13,6 @@ class FIXClient(fix.Application):
         self.sessionID_ = None
         self.loggedOn = False
 
-        self.orderCounter_ = 0
         self.msgGenerator = MessageGenerator()
 
     def onCreate(self, sessionID):
@@ -25,28 +28,36 @@ class FIXClient(fix.Application):
         self.loggedOn = False
         
     def toAdmin(self, message, sessionID):
-        print(f"Client {self.clientID_}: Sending admin message - {message}")
+        print(f"Client {self.clientID_}: Sending admin message")
+        print(f"Message: {message}")
         
     def toApp(self, message, sessionID):
-        print(f"Client {self.clientID_}: Sending app message - {message}")
+        print(f"Client {self.clientID_}: Sending app message")
+        print(f"Message: {message}")
 
     def fromAdmin(self, message, sessionID):
-        print(f"Client {self.clientID_}: Received admin message - {message}")
+        print(f"Client {self.clientID_}: Received admin message")
+        print(f"Message: {message}")
         
     def fromApp(self, message, sessionID):
-        print(f"Client {self.clientID_}: Received app message - {message}")
+        print(f"Client {self.clientID_}: Received app message")
+        print(f"Message: {message}")
     
     def sendNewSingleOrder(self) -> None:
+        global gOrderCounter
+
         if not self.sessionID_:
             print(f"Client {self.clientID_}: No active session")
             return
 
-        order = self.msgGenerator.generateNewOrderSingle(self.orderCounter_)
+        with gOrderCounterLock:
+            currOrderID = gOrderCounter
+            gOrderCounter += 1
+
+        order = self.msgGenerator.generateNewOrderSingle(currOrderID)
 
         try:
             fix.Session.sendToTarget(order, self.sessionID_)
-            print(f"Client {self.clientID_}: Sent order #{self.orderCounter_}.")
+            print(f"Client {self.clientID_}: Sent order #{currOrderID}.")
         except fix.SessionNotFound:
             print(f"Client {self.clientID_}: Session not found.")
-
-        self.orderCounter_ += 1

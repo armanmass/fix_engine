@@ -1,4 +1,7 @@
 #include "quickfix/Application.h"
+#include "quickfix/Message.h"
+#include "quickfix/Session.h"
+#include <iostream>
 
 using namespace FIX;
 
@@ -30,5 +33,8 @@ class FixApplication : public Application
   
   void fromApp(const Message& message, const SessionID& sessionID) override
   {
+    const std::string& senderCompID = sessionID.getSenderCompID().getValue();
+    std::cout << "Received message from client: " << senderCompID << std::endl;
+    std::cout << "Message: " << message.toString() << std::endl;
   }
 };

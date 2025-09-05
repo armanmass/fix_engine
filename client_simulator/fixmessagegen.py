@@ -35,14 +35,14 @@ class MessageGenerator:
     def generateNewOrderSingle(self, clientOrderID: int) -> fix50.NewOrderSingle:
         ordType = self.randomOrderType()
 
-        order = fix50.NewOrderSingle(
-            fix.ClOrdID(clientOrderID),
-            fix.HandlInst(fix.HandlInst_AUTOMATED_EXECUTION_ORDER_PRIVATE_NO_BROKER_INTERVENTION),
-            fix.Symbol(self.randomSymbol()),
-            fix.Side(self.randomSide()),
-            fix.TransactTime(datetime.datetime.now(datetime.timezone.utc)),
-            fix.OrdType(ordType)
-        )
+        order = fix50.NewOrderSingle()
+
+        order.setField(fix.ClOrdID(str(clientOrderID)))
+        order.setField(fix.HandlInst(fix.HandlInst_AUTOMATED_EXECUTION_ORDER_PRIVATE_NO_BROKER_INTERVENTION))
+        order.setField(fix.Symbol(self.randomSymbol()))
+        order.setField(fix.Side(self.randomSide()))
+        order.setField(fix.TransactTime())
+        order.setField(fix.OrdType(ordType))
 
         order.setField(fix.OrderQty(self.randomQuantity()))
         order.setField(fix.TimeInForce(self.randomTimeInForce()))
