@@ -7,6 +7,6 @@
 ### FIX Engine :white_check_mark:
 ### Client Sim :white_check_mark:
 ### Connect Clients to FIX Engine :white_check_mark:
-### gRPC Connections :x:
 ### Matching Engine :white_check_mark:
 ### Database :x:
+### gRPC Connections :x:
