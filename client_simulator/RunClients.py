@@ -1,12 +1,12 @@
 import time
-import managers
+import Managers
 
 
 def main():
     print("Starting FIX Clients...")
 
-    configManager = managers.ConfigManager("clients_config.json")
-    clientManager = managers.ClientManager(configManager)
+    configManager = Managers.ConfigManager("clients_config.json")
+    clientManager = Managers.ClientManager(configManager)
 
     clientManager.startAllClients()
 

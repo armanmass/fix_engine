@@ -20,9 +20,9 @@ int main()
         std::filesystem::current_path(exeDir);
         std::filesystem::path serverConfig = exeDir / "server.cfg";
 
-std::cout << "Current working directory: " << std::filesystem::current_path() << std::endl;
-std::cout << "Config file path: " << serverConfig << std::endl;
-std::cout << "FIXT11.xml exists in CWD: " << std::filesystem::exists("FIXT11.xml") << std::endl;
+std::cout << "Current working directory:  " << std::filesystem::current_path() << std::endl;
+std::cout << "Config file path:           " << serverConfig << std::endl;
+std::cout << "FIXT11.xml exists in CWD:   " << std::filesystem::exists("FIXT11.xml") << std::endl;
 std::cout << "FIX50SP2.xml exists in CWD: " << std::filesystem::exists("FIX50SP2.xml") << std::endl;
 
         FixApplication application;

@@ -9,7 +9,7 @@ from pathlib import Path
 cwd = Path(__file__).parent.resolve()
 
 import quickfix as fix
-from client import FIXClient
+from Client import FIXClient
 
 
 class ConfigManager:

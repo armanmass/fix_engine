@@ -11,8 +11,8 @@ class MessageGenerator:
     def __init__(self):
         self.symbols_     = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "META", "NFLX"]
         self.sides_       = [fix.Side_BUY, fix.Side_SELL]
-        self.orderTypes_  = [fix.OrdType_MARKET, fix.OrdType_LIMIT, fix.OrdType_STOP]
-        self.timeInForce_ = [fix.TimeInForce_DAY, fix.TimeInForce_GOOD_TILL_CANCEL, fix.TimeInForce_IMMEDIATE_OR_CANCEL]
+        self.orderTypes_  = [fix.OrdType_LIMIT]
+        self.timeInForce_ = [fix.TimeInForce_GOOD_TILL_CANCEL]
         
     def randomPrice(self) -> float:
         return round(random.uniform(100.0, 200.0), 2)
@@ -33,6 +33,7 @@ class MessageGenerator:
         return random.choice(self.timeInForce_)
     
     def generateNewOrderSingle(self, clientOrderID: int) -> fix50.NewOrderSingle:
+        """ Forced generation of GTC Order but may be extended for more types. """
         ordType = self.randomOrderType()
 
         order = fix50.NewOrderSingle()
@@ -44,10 +45,8 @@ class MessageGenerator:
         order.setField(fix.TransactTime())
         order.setField(fix.OrdType(ordType))
 
+        order.setField(fix.Price(self.randomPrice()))
         order.setField(fix.OrderQty(self.randomQuantity()))
         order.setField(fix.TimeInForce(self.randomTimeInForce()))
-
-        if ordType in [fix.OrdType_LIMIT, fix.OrdType_STOP]:
-            order.setField(fix.Price(self.randomPrice()))
 
         return order

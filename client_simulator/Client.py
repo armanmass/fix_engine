@@ -1,5 +1,5 @@
 import quickfix as fix
-from fixmessagegen import MessageGenerator
+from FixMessageGen import MessageGenerator
 import threading
 
 gOrderCounter = 0
