@@ -1,4 +1,4 @@
-# FIX Engine w/ Client Sim, Order History, and Matching
+# FIX Engine w/ Client Order Simulation, Order History, and Matching Engine
 ## Architecture
 ![architecture](https://i.imgur.com/jDDz8Oi.png)
 
