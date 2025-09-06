@@ -3,7 +3,7 @@
 ![architecture](https://i.imgur.com/jDDz8Oi.png)
 
 
-## README / PROJECT WIP
+## PROJECT WIP
 ### FIX Engine :white_check_mark:
 ### Client Sim :white_check_mark:
 ### Connect Clients to FIX Engine :white_check_mark:
