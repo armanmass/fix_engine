@@ -1,7 +1,10 @@
 # FIX Engine w/ Client Order Simulation, Order History, and Matching Engine
 
 ## WIP DEMO
-![demo](https://i.imgur.com/OqsRMoS.gif)
+![demo](i.imgur.com/WA3F5xo.gif)
+
+## Architecture
+![architecture](https://i.imgur.com/jDDz8Oi.png)
 
 ## PROJECT WIP
 ### FIX Engine :white_check_mark:
