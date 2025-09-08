@@ -6,7 +6,7 @@
 ## Architecture
 ![architecture](https://i.imgur.com/jDDz8Oi.png)
 
-## PROJECT WIP
+## STATUS
 ### FIX Engine :white_check_mark:
 ### Client Sim :white_check_mark:
 ### Connect Clients to FIX Engine :white_check_mark:
