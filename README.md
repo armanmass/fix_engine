@@ -3,9 +3,6 @@
 ## WIP DEMO
 ![demo](https://i.imgur.com/OqsRMoS.gif)
 
-## Architecture
-![architecture](https://i.imgur.com/jDDz8Oi.png)
-
 ## PROJECT WIP
 ### FIX Engine :white_check_mark:
 ### Client Sim :white_check_mark:
