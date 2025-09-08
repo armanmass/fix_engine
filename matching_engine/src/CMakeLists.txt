@@ -1,10 +1,14 @@
+
 add_executable(
-    MatchingEngine
+    MatchingEngineServer
+    MatchingEngineServer.cpp
     MatchingEngine.cpp
+    OrderReceiver.cpp
 )
 
 target_link_libraries(
-    MatchingEngine
+    MatchingEngineServer
     PRIVATE
+        Common
         OrderBookLib
 )

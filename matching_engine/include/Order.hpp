@@ -27,11 +27,11 @@ public:
           price_{ price }, 
           initQuantity_{ quantity },
           remQuantity_{ quantity }
-        {}
+    { }
     
     Order(OrderId orderId, Side side, Quantity quantity)
         : Order(OrderType::Market, orderId, side, InvalidPrice, quantity)
-        {}
+    { }
     
     OrderType getOrderType() const { return orderType_; }
     OrderId getOrderID() const { return orderId_; }

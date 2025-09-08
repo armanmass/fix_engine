@@ -16,7 +16,7 @@ class SetUp(ConanFile):
             warning_flags = [
                 "-Wall", "-Wextra", "-Wpedantic", "-Wshadow", "-Wnon-virtual-dtor",
                 "-Wcast-align", "-Wunused", "-Woverloaded-virtual","-Wdouble-promotion",
-                "-Wconversion", "-Wmisleading-indentation",
+                "-Wconversion", "-Wmisleading-indentation", "-Wno-nullability-extension",
             ]
 
             # SELECT SANITIZER
@@ -51,6 +51,7 @@ class SetUp(ConanFile):
     
     def requirements(self):
         self.requires("quickfix/1.15.1")
+        self.requires("grpc/1.72.0")
 
     
     def generate(self):

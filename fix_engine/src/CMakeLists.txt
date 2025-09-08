@@ -1,12 +1,14 @@
 add_executable(
     FIXEngine
     FixEngine.cpp
+    OrderSender.cpp
 )
 
 target_link_libraries(
     FIXEngine
     PRIVATE
-        FIXEngineLib    
+        FIXEngineLib
+        Common
 )
 
 add_custom_command(

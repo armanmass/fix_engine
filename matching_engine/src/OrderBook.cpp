@@ -1,4 +1,5 @@
 #include "OrderBook.hpp"
+#include "Order.hpp"
 
 #include <iostream>
 
@@ -12,7 +13,6 @@ OrderBook::~OrderBook()
 {
     shutdown_.store(true, std::memory_order_release);
     shutdownConditionVariable_.notify_one();
-    ordersPruneThread_.join();
 }
 
 
@@ -145,7 +145,8 @@ void OrderBook::updateLevelData(Price price, Quantity quantity, LevelData::Actio
     const int change = action == LevelData::Action::Add ? 1 : action == LevelData::Action::Remove ? -1 : 0;
     auto& data = data_[price];
 
-    data.count_ += change;
+    long long newDataCount = static_cast<long long>(data.count_) + change;
+    data.count_ = static_cast<Quantity>(newDataCount);
 
     if (data.count_ == 0)
     {
@@ -288,7 +289,7 @@ Trades OrderBook::matchOrders() {
             auto askInfo = trade.getAskTrade();
             auto bidInfo = trade.getBidTrade();
 std::cout << instrument_ << ": " << "Ask " << askInfo.orderId_ << " matched with Bid " << bidInfo.orderId_ << " for " \
-          << askInfo.quantity_ << " shares at $" << askInfo.price_/10000.0 << " each." << '\n';
+          << askInfo.quantity_ << " shares at $" << static_cast<double>(askInfo.price_)/10000.0 << " each." << '\n';
         }
 
     }

@@ -13,6 +13,8 @@
 
 #include <cstddef>
 
+class Order;
+
 class OrderBook {
     private:
         struct OrderEntry;

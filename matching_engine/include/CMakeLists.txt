@@ -1,12 +1,11 @@
 add_library(
     OrderBookLib
-    INTERFACE
+    STATIC
+    ../src/OrderBook.cpp
 )
-
 
 target_include_directories(
     OrderBookLib
-    INTERFACE
+    PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
 )
-

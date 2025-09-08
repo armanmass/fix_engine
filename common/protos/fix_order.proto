@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package fixOrder;
+
+service OrderReceiver {
+  rpc SendOrder (FIXOrder) returns (OrderReply) {}
+}
+
+message FIXOrder {
+  string instrument = 1;
+  uint32 order_id = 2;
+  enum Side {
+    BUY = 0;
+    SELL = 1;
+  }
+  Side side = 3;
+  uint32 price = 4;
+  uint32 quantity = 5;
+}
+
+message OrderReply {
+  bool success = 1;
+  string message = 2;
+}

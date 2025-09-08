@@ -25,7 +25,8 @@ std::cout << "Config file path:           " << serverConfig << std::endl;
 std::cout << "FIXT11.xml exists in CWD:   " << std::filesystem::exists("FIXT11.xml") << std::endl;
 std::cout << "FIX50SP2.xml exists in CWD: " << std::filesystem::exists("FIX50SP2.xml") << std::endl;
 
-        FixApplication application;
+        auto channel = grpc::CreateChannel("localhost:9787", grpc::InsecureChannelCredentials());
+        FixApplication application{channel};
 
         FIX::SessionSettings settings{ serverConfig.string() };
 

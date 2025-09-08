@@ -15,5 +15,6 @@ target_link_libraries(
     FIXEngineLib
     PUBLIC
         Common
+        FIXOrderProto
         quickfix::quickfix
 )

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-
+rm -r build
 sanitizers=("asan")
 
    echo "Building Debug with asan..."

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "quickfix/Application.h"
 #include "quickfix/Message.h"
 #include "quickfix/Session.h"
@@ -7,25 +9,36 @@
 #include <quickfix/FixValues.h>
 #include "FIXMessageOrder.hpp"
 
+#include "OrderSender.hpp"
+#include <grpcpp/grpcpp.h>
+#include <memory>
 
 class FixApplication : public FIX::Application
 {
+public:
+    FixApplication(std::shared_ptr<grpc::Channel> channel)
+        : orderSender_(std::make_unique<OrderSender>(channel)) 
+    { }
+
     void fromApp(const FIX::Message& message, const FIX::SessionID& sessionID) override
     {
         const std::string& targetCompID = sessionID.getTargetCompID().getValue();
         std::cout << "Received message from client: " << targetCompID << '\n';
-        std::cout << "FIX::Message: " << message.toString() << '\n';
 
         FIXMessageOrder order = fixMessageToOrder(message);
-        // gRPC and IPC to matching_engine and database q/kdb+
+
+        if (orderSender_ != nullptr)
+            orderSender_->SendOrder(order);
+        else
+            std::cout << "Failed to send order over gRPC in FixApplication.\n";
     }
 
-    void onCreate(const FIX::SessionID& sessionID) override {}
-    void onLogon(const FIX::SessionID& sessionID) override {}
-    void onLogout(const FIX::SessionID& sessionID) override {}
-    void toAdmin(FIX::Message&  message, const FIX::SessionID& sessionID) override {}
-    void toApp(FIX::Message& message, const FIX::SessionID& sessionID) override {}
-    void fromAdmin(const FIX::Message &, const FIX::SessionID &) override {}
+    void onCreate(const FIX::SessionID&) override {}
+    void onLogon(const FIX::SessionID&) override {}
+    void onLogout(const FIX::SessionID&) override {}
+    void toAdmin(FIX::Message&, const FIX::SessionID&) override {}
+    void toApp(FIX::Message&, const FIX::SessionID&) override {}
+    void fromAdmin(const FIX::Message&, const FIX::SessionID&) override {}
 private:
     FIXMessageOrder fixMessageToOrder(const FIX::Message& message)
     {
@@ -43,7 +56,6 @@ private:
 
         std::cout << "Symbol:   " << fixSymbol.getValue()   << '\n';
         std::cout << "Order ID: " << fixOrderID.getValue()  << '\n';
-        std::cout << "Order ID: " << fixOrderID.getValue()  << '\n';
         std::cout << "Side:     " << fixSide.getValue()     << '\n';
         std::cout << "Quantity: " << fixQuantity.getValue() << '\n';
         std::cout << "Price:    " << fixPrice.getValue()    << '\n';
@@ -57,4 +69,6 @@ private:
             static_cast<FIXMessageOrder::Quantity>(fixQuantity.getValue())
         };
     }
+
+    std::unique_ptr<OrderSender> orderSender_;
 };
