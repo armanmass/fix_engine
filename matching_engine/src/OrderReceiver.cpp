@@ -1,5 +1,6 @@
 #include "OrderReceiver.hpp"
 #include "MatchingEngine.hpp"
+#include "Order.hpp"
 #include <iostream>
 
 OrderReceiverImpl::OrderReceiverImpl(MatchingEngine& matchingEngine)

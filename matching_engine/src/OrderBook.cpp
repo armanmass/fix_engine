@@ -134,6 +134,7 @@ void OrderBook::onOrderCancelled(OrderPointer order)
 {
     updateLevelData(order->getPrice(), order->getRemQuantity(), LevelData::Action::Remove);
 }
+
 void OrderBook::onOrderMatched(Price price, Quantity quantity, bool isFullyFilled)
 {
     updateLevelData(price, quantity, isFullyFilled ? LevelData::Action::Remove : LevelData::Action::Match);

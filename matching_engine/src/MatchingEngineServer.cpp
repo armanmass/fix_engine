@@ -17,7 +17,8 @@ void RunServer(MatchingEngine& matchingEngine)
     server->Wait();
 }
 
-int main() {
+int main()
+{
     MatchingEngine matchingEngine;
     RunServer(matchingEngine);
     return 0;

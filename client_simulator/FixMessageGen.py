@@ -14,8 +14,8 @@ class MessageGenerator:
         self.orderTypes_  = [fix.OrdType_LIMIT]
         self.timeInForce_ = [fix.TimeInForce_GOOD_TILL_CANCEL]
         
-    def randomPrice(self) -> float:
-        return round(random.uniform(100.0, 200.0), 2)
+    def randomPrice(self) -> int:
+        return random.randint(100000, 200000)
         
     def randomQuantity(self) -> int:
         return random.randint(100, 500)
