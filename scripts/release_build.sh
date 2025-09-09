@@ -1,6 +1,6 @@
 #!/bin/bash
+
 set -e
-rm -r build
 
 # Release build
 echo "Building Release..."

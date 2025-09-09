@@ -1,4 +1,5 @@
 #!/bin/bash
+# TODO: UPDATE
 set -e
 
 CURRENT_DIR=$(pwd)

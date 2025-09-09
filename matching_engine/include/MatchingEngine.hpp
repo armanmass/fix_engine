@@ -1,6 +1,7 @@
 #pragma once
 
 #include "OrderTypes.hpp"
+#include "TradeInfo.hpp"
 #include <string>
 #include <unordered_map>
 #include <memory>
@@ -19,6 +20,7 @@ public:
     MatchingEngine& operator=(MatchingEngine&&) = delete;
 
     void addOrder(const std::string& instrument, OrderPointer order);
+    void sendToKDB(const std::string& instrument, const Trades& trades);
 
 private:
     std::unordered_map<std::string, std::unique_ptr<OrderBook>> orderBooks_;
