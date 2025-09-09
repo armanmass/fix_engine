@@ -1,12 +1,12 @@
-#include "OrderSender.hpp"
+#include "FixOrderSender.hpp"
 #include <iostream>
 
-OrderSender::OrderSender(std::shared_ptr<grpc::Channel> channel)
+FixOrderSender::FixOrderSender(std::shared_ptr<grpc::Channel> channel)
     : stub_(fixOrder::OrderReceiver::NewStub(channel))
 {
 }
 
-bool OrderSender::SendOrder(const FIXMessageOrder& order)
+bool FixOrderSender::SendOrder(const FIXMessageOrder& order)
 {
     fixOrder::FIXOrder request;
     request.set_instrument(order.instrument);

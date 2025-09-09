@@ -1,7 +1,7 @@
 add_executable(
     FIXEngine
     FixEngine.cpp
-    OrderSender.cpp
+    FixOrderSender.cpp
 )
 
 target_link_libraries(

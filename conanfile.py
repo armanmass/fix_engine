@@ -1,11 +1,24 @@
+import os
 from conan import ConanFile
 from conan.tools.cmake import CMakeDeps, CMakeToolchain, cmake_layout
+from conan.errors import ConanException
 
 
 class SetUp(ConanFile):
     settings = "os", "arch", "compiler", "build_type"
     options = { "sanitizer": ["asan", "tsan", "msan", "ubsan"] }
     default_options = { "sanitizer": "asan" }
+
+    def validate(self):
+        # verify user has kjdb+ files
+        kdb_files = ["vendor/kdb/k.h", "vendor/kdb/c.o"]
+        missing = [f for f in kdb_files if not os.path.exists(f)]
+        if missing:
+            raise ConanException (
+                f"Missing kdb+ files: {missing}\n"
+                 "Download from: https://kx.com/connect-with-us/download/\n"
+                 "Extract k.h and c.o to vendor/kdb/"
+            )
 
     def configure(self):
         # DEBUG

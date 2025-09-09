@@ -4,10 +4,10 @@
 
 class MatchingEngine;
 
-class OrderReceiverImpl final : public fixOrder::OrderReceiver::Service 
+class FixOrderReceiver final : public fixOrder::OrderReceiver::Service 
 {
 public:
-    OrderReceiverImpl(MatchingEngine& matchingEngine);
+    FixOrderReceiver(MatchingEngine& matchingEngine);
 
     grpc::Status SendOrder([[maybe_unused]] grpc::ServerContext* context, const fixOrder::FIXOrder* request, fixOrder::OrderReply* reply) override;
 

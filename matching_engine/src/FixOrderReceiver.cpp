@@ -1,13 +1,13 @@
-#include "OrderReceiver.hpp"
+#include "FixOrderReceiver.hpp"
 #include "MatchingEngine.hpp"
 #include "Order.hpp"
 #include <iostream>
 
-OrderReceiverImpl::OrderReceiverImpl(MatchingEngine& matchingEngine)
+FixOrderReceiver::FixOrderReceiver(MatchingEngine& matchingEngine)
     : matchingEngine_(matchingEngine) 
 { }
 
-grpc::Status OrderReceiverImpl::SendOrder([[maybe_unused]] grpc::ServerContext* context, const fixOrder::FIXOrder* request, fixOrder::OrderReply* reply) 
+grpc::Status FixOrderReceiver::SendOrder([[maybe_unused]] grpc::ServerContext* context, const fixOrder::FIXOrder* request, fixOrder::OrderReply* reply) 
 {
     OrderType orderType = OrderType::GoodTillCancel;
     OrderId orderId     = request->order_id();

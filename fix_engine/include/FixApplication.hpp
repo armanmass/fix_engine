@@ -9,7 +9,7 @@
 #include <quickfix/FixValues.h>
 #include "FIXMessageOrder.hpp"
 
-#include "OrderSender.hpp"
+#include "FixOrderSender.hpp"
 #include <grpcpp/grpcpp.h>
 #include <memory>
 
@@ -17,7 +17,7 @@ class FixApplication : public FIX::Application
 {
 public:
     FixApplication(std::shared_ptr<grpc::Channel> channel)
-        : orderSender_(std::make_unique<OrderSender>(channel)) 
+        : fixOrderSender_(std::make_unique<FixOrderSender>(channel)) 
     { }
 
     void fromApp(const FIX::Message& message, const FIX::SessionID& sessionID) override
@@ -27,8 +27,8 @@ public:
 
         FIXMessageOrder order = fixMessageToOrder(message);
 
-        if (orderSender_ != nullptr)
-            orderSender_->SendOrder(order);
+        if (fixOrderSender_ != nullptr)
+            fixOrderSender_->SendOrder(order);
         else
             std::cout << "Failed to send order over gRPC in FixApplication.\n";
     }
@@ -70,5 +70,5 @@ private:
         };
     }
 
-    std::unique_ptr<OrderSender> orderSender_;
+    std::unique_ptr<FixOrderSender> fixOrderSender_;
 };

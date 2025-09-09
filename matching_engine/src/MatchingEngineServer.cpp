@@ -1,12 +1,12 @@
+#include "FixOrderReceiver.hpp"
 #include "MatchingEngine.hpp"
-#include "OrderReceiver.hpp"
 #include <grpcpp/grpcpp.h>
 #include <iostream>
 
 void RunServer(MatchingEngine& matchingEngine) 
 {
     std::string serverAddress("0.0.0.0:9787");
-    OrderReceiverImpl service(matchingEngine);
+    FixOrderReceiver service(matchingEngine);
 
     grpc::ServerBuilder builder;
     builder.AddListeningPort(serverAddress, grpc::InsecureServerCredentials());

@@ -6,10 +6,10 @@
 #include <grpcpp/grpcpp.h>
 #include <memory>
 
-class OrderSender 
+class FixOrderSender 
 {
 public:
-    OrderSender(std::shared_ptr<grpc::Channel> channel);
+    FixOrderSender(std::shared_ptr<grpc::Channel> channel);
 
     bool SendOrder(const FIXMessageOrder& order);
 
