@@ -6,12 +6,13 @@
 ![architecture](https://i.imgur.com/uwrEFne.png)
 
 ## Status
+### Client Simulation :white_check_mark:
 ### FIX Engine :white_check_mark:
-### Client Sim :white_check_mark:
 ### Connect Clients to FIX Engine :white_check_mark:
 ### Matching Engine :white_check_mark:
-### gRPC Connection :white_check_mark:
+### gRPC :white_check_mark:
 ### Database :white_check_mark:
+### IPC :white_check_mark:
 
 ## Usage
 Requires: tmux, conan, cmake 3.30.3, q (rest of dependencies are handled)
