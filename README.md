@@ -1,7 +1,6 @@
 # FIX Engine w/ Client Order Simulation, Order History, and Matching Engine
 
-# WIP DEMO (Recording real demo this is outdated)
-![demo](https://i.imgur.com/TZIh901.gif)
+# [Click here for Demo](https://streamable.com/865u5w)
 
 ## Architecture
 ![architecture](https://i.imgur.com/uwrEFne.png)
