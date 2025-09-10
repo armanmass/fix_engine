@@ -2,6 +2,7 @@
 
 #include "OrderTypes.hpp"
 #include "TradeInfo.hpp"
+#include "k.h"
 #include <string>
 #include <unordered_map>
 #include <memory>
@@ -24,4 +25,5 @@ public:
 
 private:
     std::unordered_map<std::string, std::unique_ptr<OrderBook>> orderBooks_;
+    I kdb_handle_;
 };

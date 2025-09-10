@@ -1,12 +1,12 @@
-trades:([] 
-    timestamp:`datetime$();
-    symbol:`symbol$();
-    price:`real$();
+tradesdb:([] 
+    time:`timestamp$();
+    sym:`symbol$();
+    price:`float$();
     quantity:`int$()
  )
 
-`:database/tradesdb set trades
-show meta trades
+`:database/tradesdb set tradesdb
+show meta tradesdb
 show "New trades database created at: database/tradesdb"
 \\
 

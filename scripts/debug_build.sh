@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -e
-rm -r build
 
 # Solo asan build
 sanitizers=("asan")
