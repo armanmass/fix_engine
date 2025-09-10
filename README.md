@@ -16,7 +16,7 @@
 ## Usage
 Requires: tmux, conan, cmake 3.30.3, q (rest of dependencies are handled)
 
-Clone repo and run these scripts in root, initial build may be long due to gRPC.
+Clone repo and run these scripts in project root, initial build may be long due to gRPC.
 ```bash
 ./scripts/release_build.sh
 ```
