@@ -4,6 +4,11 @@ set -e
 CURRENT_DIR=$(pwd)
 SESSION="FIX_DistributedSystem"
 
+if [ ! -f "database/tradesdb" ]; then
+	echo "tradesdb doesn't exist, creating..."
+	q database/create_new_db.q
+fi
+
 tmux kill-session -t $SESSION 2>/dev/null || true
 tmux new-session -d -s $SESSION
 
