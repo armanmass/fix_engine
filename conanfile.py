@@ -10,13 +10,13 @@ class SetUp(ConanFile):
     default_options = { "sanitizer": "asan" }
 
     def validate(self):
-        # verify user has kjdb+ files
+        # verify user has kdb+ files
         kdb_files = ["vendor/kdb/k.h", "vendor/kdb/c.o"]
         missing = [f for f in kdb_files if not os.path.exists(f)]
         if missing:
             raise ConanException (
                 f"Missing kdb+ files: {missing}\n"
-                 "Download from: https://kx.com/connect-with-us/download/\n"
+                 "Download from: https://github.com/KxSystems/kdb"
                  "Extract k.h and c.o to vendor/kdb/"
             )
 
