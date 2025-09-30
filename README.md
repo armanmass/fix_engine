@@ -1,6 +1,6 @@
 # FIX Engine w/ Client FIX Message Simulation, Matching Engine, and Trade History Database
 
-# [Click here for Demo](https://streamable.com/865u5w)
+# [Click here for Demo](https://streamable.com/865u5w?t=61)
 
 ## Architecture
 ![architecture](https://i.imgur.com/uwrEFne.png)
