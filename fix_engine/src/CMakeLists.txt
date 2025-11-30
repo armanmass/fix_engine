@@ -14,20 +14,20 @@ target_link_libraries(
 add_custom_command(
     TARGET FIXEngine 
     POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
-    "${CMAKE_CURRENT_SOURCE_DIR}/../server.cfg"
+    "${CMAKE_SOURCE_DIR}/fix_engine/server.cfg"
     $<TARGET_FILE_DIR:FIXEngine>
 )
 
 add_custom_command(
     TARGET FIXEngine 
     POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../common/spec/FIXT11.xml"
+    "${CMAKE_SOURCE_DIR}/common/spec/FIXT11.xml"
     $<TARGET_FILE_DIR:FIXEngine>
 )
 
 add_custom_command(
     TARGET FIXEngine 
     POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../common/spec/FIX50SP2.xml"
+    "${CMAKE_SOURCE_DIR}/common/spec/FIX50SP2.xml"
     $<TARGET_FILE_DIR:FIXEngine>
 )

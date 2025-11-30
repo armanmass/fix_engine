@@ -1,6 +1,7 @@
 import os
 from conan import ConanFile
 from conan.tools.cmake import CMakeDeps, CMakeToolchain, cmake_layout
+from conan.tools.files import replace_in_file, load
 from conan.errors import ConanException
 
 
@@ -68,11 +69,14 @@ class SetUp(ConanFile):
 
     
     def generate(self):
+        for dep in self.dependencies.values():
+            if dep.ref.name == "quickfix":
+                utility_h_path = os.path.join(dep.package_folder, "include", "quickfix", "Utility.h")
+                if "std::unique_ptr" not in load(self, utility_h_path):
+                    replace_in_file(self, utility_h_path, "#define SmartPtr std::auto_ptr", "#include <memory>\n#define SmartPtr std::unique_ptr")
+
         cmake = CMakeToolchain(self)
         cmake.generator = "Ninja"
-        if self.settings.compiler.cppstd:
-            cmake.variables["CMAKE_CXX_STANDARD"] = str(self.settings.compiler.cppstd)
-            cmake.variables["CMAKE_CXX_STANDARD_REQUIRED"] = "ON"
         cmake.variables["CMAKE_EXPORT_COMPILE_COMMANDS"] = "ON"
         cmake.generate()
 
