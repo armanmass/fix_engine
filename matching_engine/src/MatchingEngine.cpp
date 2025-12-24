@@ -55,12 +55,12 @@ void MatchingEngine::sendToKDB(const std::string& instrument, const Trades& trad
 
     // J is long long defined in k.h which is j=long in kdb+ 8byte int
     const J numTrades = trades.size();
-        K timestamps = ktn(KP, numTrades);
+    K timestamps = ktn(KP, numTrades);
     K symbols    = ktn(KS, numTrades);
     K prices     = ktn(KF, numTrades);
     K quantities = ktn(KI, numTrades);
 
-    for (J i{}; i<numTrades; ++i)
+    for (J i{}; i < numTrades; ++i)
     {
         const auto& trade = trades[i];
         Price price = trade.getAskTrade().price_;
