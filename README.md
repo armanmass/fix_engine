@@ -69,7 +69,7 @@ The project includes helper scripts to handle the build process, including depen
 
 1.  **Clone the repository:**
     ```bash
-    git clone [<repository_url>](https://github.com/armanmass/fix_engine)
+    git clone https://github.com/armanmass/fix_engine
     cd fix_engine
     ```
 
