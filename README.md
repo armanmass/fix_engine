@@ -17,16 +17,16 @@ The system uses a microservices-like architecture where components communicate v
 ```mermaid
 graph TD
     subgraph "External World"
-        Client[Client Simulator<br/>(Python)]
+        Client["Client Simulator<br/>(Python)"]
     end
 
     subgraph "Core System (C++)"
-        FIX[FIX Engine<br/>(QuickFIX)]
-        Match[Matching Engine<br/>(gRPC Server)]
+        FIX["FIX Engine<br/>(QuickFIX)"]
+        Match["Matching Engine<br/>(gRPC Server)"]
     end
 
     subgraph "Persistence"
-        DB[(KDB+ / q<br/>Database)]
+        DB[("KDB+ / q<br/>Database")]
     end
 
     Client -- "FIX 5.0 SP2 (TCP)" --> FIX
